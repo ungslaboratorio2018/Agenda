@@ -5,11 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import dto.PersonaDTO;
 import persistencia.conexion.Conexion;
 import persistencia.dao.interfaz.PersonaDAO;
-import dto.DomicilioDTO;
-import dto.PersonaDTO;
-import dto.TipoDeContactoDTO;
 
 public class PersonaDAOSQL implements PersonaDAO {
 
@@ -27,8 +26,8 @@ public class PersonaDAOSQL implements PersonaDAO {
 			statement.setString(3, persona.getTelefono());
 			statement.setString(4, persona.getEmail());
 			statement.setDate(5, persona.getFechaDeNacimiento());
-			statement.setLong(6, persona.getDomicilio().getIdDomicilio());
-			statement.setLong(7, persona.getTipoDeContacto().getIdTipoDeContacto());
+			statement.setLong(6, persona.getIdDomicilio());
+			statement.setLong(7, persona.getIdTipoDeContacto());
 			if (statement.executeUpdate() > 0) // Si se ejecutó devuelvo true
 				return true;
 		} catch (SQLException e) {
@@ -63,10 +62,15 @@ public class PersonaDAOSQL implements PersonaDAO {
 			resultSet = statement.executeQuery();
 
 			while (resultSet.next()) {
-				personas.add(new PersonaDTO(resultSet.getLong("idPersona"), resultSet.getString("nombre"),
-						resultSet.getString("telefono"), resultSet.getString("email"),
-						resultSet.getDate("fechaDeNacimiento"), new DomicilioDTO(1,"",1,1,1,1),
-						new TipoDeContactoDTO(1,"")));
+				personas.add(new PersonaDTO(
+							 resultSet.getLong("idPersona"), 
+							 resultSet.getString("nombre"),
+						     resultSet.getString("telefono"), 
+						     resultSet.getString("email"),
+						     resultSet.getDate("fechaDeNacimiento"), 
+						     resultSet.getLong("idDomicilio"),
+						     resultSet.getLong("idTipoDeContacto")
+						     ));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -75,7 +79,7 @@ public class PersonaDAOSQL implements PersonaDAO {
 	}
 
 	@Override
-	public boolean update(PersonaDTO personaParaActualizar) {
+	public boolean update(PersonaDTO persona_para_actualizar) {
 		// TODO Auto-generated method stub
 		return false;
 	}

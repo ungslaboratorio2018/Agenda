@@ -23,5 +23,9 @@ public class TipoDeContactoDTO {
 		this.tipoDeContacto = tipoDeContacto;
 	}
 	
+    public String toString()
+    {
+     return tipoDeContacto;
+    }
 	
 }

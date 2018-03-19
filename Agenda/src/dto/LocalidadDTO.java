@@ -26,4 +26,9 @@ public class LocalidadDTO {
 		this.localidad = localidad;
 	}
 	
+    public String toString()
+    {
+     return localidad;
+    }
+	
 }

@@ -32,13 +32,13 @@ public class LocalidadDAOSQL implements LocalidadDAO {
 		return false;
 	}
 
-	public boolean delete(LocalidadDTO localidad) {
+	public boolean delete(LocalidadDTO localidad_a_eliminar) {
 		PreparedStatement statement;
 		int chequeoUpdate = 0;
 		Conexion conexion = Conexion.getConexion();
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(delete);
-			statement.setString(1, Long.toString(localidad.getIdLocalidad()));
+			statement.setString(1, Long.toString(localidad_a_eliminar.getIdLocalidad()));
 			chequeoUpdate = statement.executeUpdate();
 			if (chequeoUpdate > 0) // Si se ejecutÃ³ devuelvo true
 				return true;
@@ -48,13 +48,13 @@ public class LocalidadDAOSQL implements LocalidadDAO {
 		return false;
 	}
 
-	public boolean update(LocalidadDTO localidad) {
+	public boolean update(LocalidadDTO localidad_para_actualizar) {
 		PreparedStatement statement;
 		Conexion conexion = Conexion.getConexion();
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(update);			
-			statement.setString(1, localidad.getLocalidad());
-			statement.setLong(2, localidad.getIdLocalidad());
+			statement.setString(1, localidad_para_actualizar.getLocalidad());
+			statement.setLong(2, localidad_para_actualizar.getIdLocalidad());
 			if (statement.executeUpdate() > 0) // Si se ejecutó devuelvo true
 				return true;
 		} catch (SQLException e) {

@@ -11,7 +11,11 @@ public interface DomicilioDAO {
 	public boolean delete(DomicilioDTO domicilioParaEliminar);
 
 	public boolean update(DomicilioDTO domicilioParaActualizar);
+	
+	public int max();
 
 	public List<DomicilioDTO> readAll();
+
+	public DomicilioDTO getDomicilioById(long idDomicilio);
 
 }

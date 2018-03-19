@@ -9,6 +9,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import dto.LocalidadDTO;
+import dto.TipoDeContactoDTO;
 import presentacion.controlador.Controlador;
 
 public class VentanaPersona extends JFrame {
@@ -23,8 +26,8 @@ public class VentanaPersona extends JFrame {
 	private JTextField txtAltura;
 	private JTextField txtPiso;
 	private JTextField txtDepartamento;
-	private JComboBox<String> comboBoxLocalidades;
-	private JComboBox<String> comboBoxTipoDeContacto;
+	private JComboBox<LocalidadDTO> comboBoxLocalidades;
+	private JComboBox<TipoDeContactoDTO> comboBoxTipoDeContacto;
 	private JButton btnAgregarPersona;
 	private Controlador controlador;
 
@@ -123,17 +126,17 @@ public class VentanaPersona extends JFrame {
 		panel.add(txtDepartamento);
 		txtDepartamento.setColumns(10);
 
-		comboBoxLocalidades = new JComboBox<String>();
+		comboBoxLocalidades = new JComboBox<LocalidadDTO>();
 		comboBoxLocalidades.setBounds(133, 340, 164, 20);
 		panel.add(comboBoxLocalidades);
-		comboBoxLocalidades.addItem("Hurlingham");
-		comboBoxLocalidades.addItem("San Miguel");
+//		comboBoxLocalidades.addItem("Hurlingham");
+//		comboBoxLocalidades.addItem("San Miguel");
 		
-		comboBoxTipoDeContacto = new JComboBox<String>();
+		comboBoxTipoDeContacto = new JComboBox<TipoDeContactoDTO>();
 		comboBoxTipoDeContacto.setBounds(133, 380, 164, 20);
 		panel.add(comboBoxTipoDeContacto);
-		comboBoxTipoDeContacto.addItem("Hermano");
-		comboBoxTipoDeContacto.addItem("Mamá");
+//		comboBoxTipoDeContacto.addItem("Hermano");
+//		comboBoxTipoDeContacto.addItem("Mamá");
 
 		btnAgregarPersona = new JButton("Agregar");
 		btnAgregarPersona.addActionListener(this.controlador);
@@ -175,12 +178,20 @@ public class VentanaPersona extends JFrame {
 		return txtDepartamento;
 	}
 
-	public String getComboBoxLocalidades() {
-		return comboBoxLocalidades.getSelectedItem().toString();
+//	public String getComboBoxLocalidades() {
+//		return comboBoxLocalidades.getSelectedItem().toString();
+//	}
+//
+//	public String getComboBoxTipoDeContacto() {
+//		return comboBoxTipoDeContacto.getSelectedItem().toString();
+//	}
+	
+	public JComboBox<LocalidadDTO> getComboBoxLocalidades(){
+		return comboBoxLocalidades;
 	}
-
-	public String getComboBoxTipoDeContacto() {
-		return comboBoxTipoDeContacto.getSelectedItem().toString();
+	
+	public JComboBox<TipoDeContactoDTO> getComboBoxTipoDeContacto(){
+		return comboBoxTipoDeContacto;
 	}
 
 	public JButton getBtnAgregarPersona() {
