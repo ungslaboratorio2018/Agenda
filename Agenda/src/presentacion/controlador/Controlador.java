@@ -53,11 +53,18 @@ public class Controlador implements ActionListener {
 		for (int i = 0; i < this.personas_en_tabla.size(); i++) {
 			PersonaDTO persona = this.personas_en_tabla.get(i);
 			DomicilioDTO domicilio = agenda.obtenerDomicilioPorId(persona.getIdDomicilio());
+			TipoDeContactoDTO tipoDeContacto = null;
+			for (TipoDeContactoDTO tipoDeContactoDTO : agenda.obtenerTipoDeContactos()) {
+				if (tipoDeContactoDTO.getIdTipoDeContacto() == persona.getIdTipoDeContacto()) {
+					tipoDeContacto = tipoDeContactoDTO;
+				}
+			}
 			Object[] fila = { persona.getNombre(), 
 					          persona.getTelefono(),
 					          persona.getEmail(),
 					          persona.getFechaDeNacimiento(),
-					          domicilio.getCalle() + " - " + domicilio.getAltura()
+					          domicilio.getCalle() + " - " + domicilio.getAltura(),
+					          tipoDeContacto.getTipoDeContacto()
 					          };
 			this.vista.getModelPersonas().addRow(fila);
 		}
