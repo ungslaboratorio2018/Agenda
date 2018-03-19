@@ -12,9 +12,9 @@ import persistencia.dao.interfaz.DomicilioDAO;
 
 public class DomicilioDAOSQL implements DomicilioDAO {
 
-	private static final String insert = "INSERT INTO domicilios (idDomicilio, calle, altura, piso, departamento, idLocalidad) VALUES (?, ?, ?, ?, ?, ?);";
+	private static final String insert = "INSERT INTO domicilios (idDomicilio, calle, altura, piso, departamento, idLocalidad) VALUES (?, ?, ?, ?, ?, ?)";
 	private static final String delete = "DELETE FROM domicilios WHERE idDomicilio = ?";
-	private static final String update = "UPDATE domicilios SET calle = ?, altura = ?, piso = ?, departamento = ?, idLocalidad = ? WHERE idDomicilio = ?;";
+	private static final String update = "UPDATE domicilios SET calle = ?, altura = ?, piso = ?, departamento = ?, idLocalidad = ? WHERE idDomicilio = ?";
 	private static final String readall = "SELECT * FROM domicilios";
 
 	public boolean insert(DomicilioDTO domicilio) {
