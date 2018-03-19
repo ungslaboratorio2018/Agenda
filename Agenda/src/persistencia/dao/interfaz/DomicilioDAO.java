@@ -10,6 +10,8 @@ public interface DomicilioDAO {
 
 	public boolean delete(DomicilioDTO domicilioParaEliminar);
 
+	public boolean update(DomicilioDTO domicilioParaActualizar);
+
 	public List<DomicilioDTO> readAll();
-	
+
 }

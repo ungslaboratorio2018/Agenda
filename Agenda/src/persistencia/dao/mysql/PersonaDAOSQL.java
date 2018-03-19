@@ -73,4 +73,10 @@ public class PersonaDAOSQL implements PersonaDAO {
 		}
 		return personas;
 	}
+
+	@Override
+	public boolean update(PersonaDTO personaParaActualizar) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
