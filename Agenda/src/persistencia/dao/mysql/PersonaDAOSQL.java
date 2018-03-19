@@ -65,7 +65,7 @@ public class PersonaDAOSQL implements PersonaDAO {
 			while (resultSet.next()) {
 				personas.add(new PersonaDTO(resultSet.getLong("idPersona"), resultSet.getString("nombre"),
 						resultSet.getString("telefono"), resultSet.getString("email"),
-						resultSet.getDate("fechaDeNacimiento"), new DomicilioDTO(1,"",1,1,1,null),
+						resultSet.getDate("fechaDeNacimiento"), new DomicilioDTO(1,"",1,1,1,1),
 						new TipoDeContactoDTO(1,"")));
 			}
 		} catch (SQLException e) {
